@@ -502,7 +502,13 @@ body {
 #div-saveVSS-floater-content .table {
     width: 562px;
     margin: 5px 25px;
+
 }
+
+#div-comfirmSaveVSS-floater-content td{
+    border: 0;
+}
+
 
 .tr-param {
     height: 25px;

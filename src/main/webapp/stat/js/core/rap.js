@@ -2335,6 +2335,13 @@ function deepCopy(o) {
     /**
      * cancel save in VSS mode
      */
+    ws.cancelComfirmSaveVSS = function() {
+        ecui.get("comfirmSaveVSSFloater").hide();
+    };
+
+    /**
+     * cancel save in VSS mode
+     */
     ws.cancelSaveVSS = function() {
         ecui.get("saveVSSFloater").hide();
     };
@@ -2384,6 +2391,15 @@ function deepCopy(o) {
 
     /**
      * switch to view mode
+     * @param name true if save operation shuold be performed
+     *               false if user cancel the edit
+     */
+    ws.showComfirmAlert = function() {
+        ecFloater.show("comfirmSaveVSSFloater");
+    };
+
+    /**
+     * switch to view mode
      * @param isSave true if save operation shuold be performed
      *               false if user cancel the edit
      */
@@ -2427,6 +2443,7 @@ function deepCopy(o) {
                 showMessage(CONST.WARN, ELEMENT_ID.WORKSPACE_MESSAGE, MESSAGE.FATAL_ERROR);
             } finally {
                 processed();
+                ws.showComfirmAlert();
             }
         });
 
@@ -2457,6 +2474,7 @@ function deepCopy(o) {
                 showMessage(CONST.WARN, ELEMENT_ID.VSS_PANEL_MESSAGE, MESSAGE.FATAL_ERROR);
             } finally {
                 processed();
+                ws.showComfirmAlert();
             }
         });
     };

@@ -5,6 +5,7 @@ import com.taobao.rigel.rap.account.bo.Notification;
 import com.taobao.rigel.rap.account.bo.Role;
 import com.taobao.rigel.rap.account.bo.User;
 import com.taobao.rigel.rap.common.base.ActionBase;
+import com.taobao.rigel.rap.common.config.SystemConstant;
 import com.taobao.rigel.rap.common.service.impl.ContextManager;
 import com.taobao.rigel.rap.common.utils.CacheUtils;
 import com.taobao.rigel.rap.common.utils.Pinyin4jUtil;
@@ -306,8 +307,9 @@ public class AccountAction extends ActionBase {
     public String doLogin() {
         // 增加验证码
         Map<String,Object> session = ContextManager.currentSession();
+        String kaptcha = SystemConstant.getConfig("rap.kaptcha");
         String kaptchaExpected = (String)session.get(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
-        if(getKaptcha() == null || !getKaptcha().equals(kaptchaExpected)) {
+        if("1".equals(kaptcha) && (getKaptcha() == null || !getKaptcha().equals(kaptchaExpected))) {
             setErrMsg("验证码错误");
             return ERROR;
         }

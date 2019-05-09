@@ -14,6 +14,7 @@ public class SessionListener implements HttpSessionListener {
 
     public void sessionCreated(HttpSessionEvent event) {
         ServletContext context = event.getSession().getServletContext();
+        event.getSession().setMaxInactiveInterval(86400 * 30);
         // online users count processing
         String key = ContextManager.KEY_COUNT_OF_ONLINE_USER_LIST;
         if (context.getAttribute(key) == null) {

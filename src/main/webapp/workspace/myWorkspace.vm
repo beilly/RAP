@@ -208,6 +208,24 @@
     </form>
 #endFloater
 
+#startFloater("comfirmSaveVSSFloater" "重要提示" 420 160)
+<form name="comfirmSaveVSSFloater">
+    <div id="div-comfirmSaveVSS-floater-content">
+        <table class="table">
+            <tr><td><strong>若本次提交有修改，请把修改内容周知到相关人员</strong></td></tr>
+            <tr></tr>
+            <tr>
+                <td align="center">
+                    <button type="button" class="btn btn-primary" onclick="ws.cancelComfirmSaveVSS(); return false;">
+                    确认
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
+#endFloater
+
 #startFloater("versionFloater" "" 600 400)
 <div class="myfloater">
     <div id="div-version-floater-message" class="label" style="display:none;"></div>
